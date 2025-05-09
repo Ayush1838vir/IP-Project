@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Bins - Smart Waste Management</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="main-header">
+        <h1>IoT-Enabled Smart Waste Bins</h1>
+        <p>Real-time monitoring and efficient waste collection</p>
+    </header>
+
+    <nav class="main-nav container">
+        <ul>
+            <li><a href="dashboard.html">Home</a></li>
+            <li><a href="waste-classification.html">AI Classification</a></li>
+            <li><a href="smart-bins.html" class="active">Smart Bins</a></li>
+            <li><a href="rewards.html">Rewards</a></li>
+            <li><a href="blockchain.html">Blockchain</a></li>
+            <li><a href="vehicle-tracking.html">Vehicle Tracking</a></li>
+            <li><a href="waste-optimization.html">Optimization</a></li>
+            <li><a href="index.html">Logout</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <div class="card">
+            <h2 class="card-title">Smart Bin Monitoring</h2>
+            <p class="mb-3">
+                Our IoT-enabled smart bins are equipped with sensors that monitor fill levels in real-time.
+                This data helps optimize collection routes, reduce operational costs, and prevent overflow situations.
+            </p>
+            
+            <div class="bin-container">
+                <div class="bin-card" onclick="openBinDetails('bio')">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1040/1040230.png" alt="Bio Bin">
+                    <h3>Biodegradable</h3>
+                    <div class="progress-container" style="height: 10px;">
+                        <div class="progress-bar" style="width: 40%;"></div>
+                    </div>
+                    <p>40% Full</p>
+                </div>
+                
+                <div class="bin-card" onclick="openBinDetails('recycle')">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3081/3081850.png" alt="Recycle Bin">
+                    <h3>Recyclable</h3>
+                    <div class="progress-container" style="height: 10px;">
+                        <div class="progress-bar" style="width: 60%;"></div>
+                    </div>
+                    <p>60% Full</p>
+                </div>
+                
+                <div class="bin-card" onclick="openBinDetails('hazard')">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1995/1995530.png" alt="Hazardous Bin">
+                    <h3>Hazardous</h3>
+                    <div class="progress-container" style="height: 10px;">
+                        <div class="progress-bar" style="width: 30%;"></div>
+                    </div>
+                    <p>30% Full</p>
+                </div>
+                
+                <div class="bin-card" onclick="openBinDetails('ewaste')">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2432/2432576.png" alt="E-Waste Bin">
+                    <h3>Electronic Waste</h3>
+                    <div class="progress-container" style="height: 10px;">
+                        <div class="progress-bar" style="width: 50%;"></div>
+                    </div>
+                    <p>50% Full</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mt-4">
+            <h2 class="card-title">Smart Bin Features</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3 class="card-title">Fill Level Monitoring</h3>
+                    <p>Ultrasonic sensors measure the fill level of each bin in real-time, providing accurate data for collection planning.</p>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Automated Alerts</h3>
+                    <p>The system sends automated alerts when bins reach critical fill levels, preventing overflow and ensuring timely collection.</p>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Data Analytics</h3>
+                    <p>Advanced analytics provide insights into waste generation patterns, helping optimize bin placement and collection schedules.</p>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Solar Powered</h3>
+                    <p>Our smart bins are powered by solar panels, making them energy-efficient and environmentally friendly.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mt-4">
+            <h2 class="card-title">Bin Locations</h2>
+            <div style="height: 400px; background-color: #e9e9e9; border-radius: 10px; display: flex; justify-content: center; align-items: center;">
+                <p>Interactive map showing bin locations across Himachal Pradesh</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2025 Smart Waste Management Himachal Pradesh</p>
+    </footer>
+
+    <script>
+        function openBinDetails(binType) {
+            window.location.href = `bin-details.html?bin=${binType}`;
+        }
+    </script>
+</body>
+</html>

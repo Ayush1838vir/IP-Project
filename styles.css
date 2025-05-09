@@ -1,0 +1,35 @@
+/* Global Styles */ * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial', 
+    sans-serif; } body { background-color: #f0f8ff; color: #333; line-height: 1.6; }
+     .container { max-width: 1200px; margin: 0 auto; padding: 20px; } 
+      .main-header { background: linear-gradient(135deg, #4CAF50, #2E7D32); color: 
+        white; text-align: center; padding: 2rem; margin-bottom: 2rem; border-radius:
+         0 0 10px 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); } .main-header h1 
+         { font-size: 2.5rem; margin-bottom: 0.5rem; } .main-header p { font-size: 1.2rem;
+             opacity: 0.9; } /* Navigation */ .main-nav { background-color: #fff; 
+                border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+                margin-bottom: 2rem; } .main-nav ul { display: flex; list-style: none;
+         justify-content: center; padding: 1rem; } .main-nav li { margin: 0 1rem; }
+          .main-nav a { text-decoration: none; color: #4CAF50; font-weight: bold; padding:
+             0.5rem 1rem; border-radius: 5px; transition: all 0.3s ease; } .main-nav a:hover
+              { background-color: #4CAF50; color: white; } .main-nav a.active 
+              { background-color: #4CAF50; color: white; } /* Card Styles */ .card
+               { background-color: white; border-radius: 10px; box-shadow: 0 4px 6px
+                 rgba(0, 0, 0, 0.1); padding: 1.5rem; margin-bottom: 1.5rem; }
+                  .card-title { color: #4CAF50; margin-bottom: 1rem; font-size: 1.5rem; }
+                   /* Button Styles */ .btn { display: inline-block; padding: 10px 20px;
+                     background-color: #4CAF50; color: white; border: none; border-radius: 5px;
+                      cursor: pointer; text-decoration: none; font-size: 1rem; transition:
+                       background-color 0.3s ease; } .btn:hover { background-color: #45a049; }
+                        .btn-secondary { background-color: #2196F3; } .btn-secondary:hover 
+                        { background-color: #0b7dda; } .btn-danger { background-color: #f44336;
+                         } .btn-danger:hover { background-color: #d32f2f; } .btn-warning 
+                         { background-color: #ff9800; } .btn-warning:hover { background-color:
+                             #e68900; } /* Grid Layout */ .grid { display: grid;
+                                 grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+                                 gap: 20px; } /* Form Styles */ .form-group { margin-bottom: 1rem; }
+ .form-group label { display: block; margin-bottom: 0.5rem; font-weight: bold; }
+  .form-control { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 
+    5px; font-size: 1rem; } /* Table Styles */ .table { width: 100%; border-collapse:
+         collapse; margin: 1rem 0; } .table th, .table td { padding: 12px 15px; text-align:
+             left; border-bottom: 1px solid #ddd; } .table th { background-color:
+                 #f2f2f2; font-weight: bold; } .table tr:hover { background-color: #f5f5f5; } /* Footer Styles */ .main-footer { background-color: #333; color: white; text-align: center; padding: 1.5rem; margin-top: 2rem; border-radius: 10px 10px 0 0; } /* Utility Classes */ .text-center { text-align: center; } .mt-1 { margin-top: 0.5rem; } .mt-2 { margin-top: 1rem; } .mt-3 { margin-top: 1.5rem; } .mt-4 { margin-top: 2rem; } .mb-1 { margin-bottom: 0.5rem; } .mb-2 { margin-bottom: 1rem; } .mb-3 { margin-bottom: 1.5rem; } .mb-4 { margin-bottom: 2rem; } /* Login/Register Specific Styles */ .auth-container { max-width: 400px; margin: 50px auto; background: linear-gradient(135deg, #89f7fe, #66a6ff); padding: 2rem; border-radius: 10px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); } .form-toggle { background: none; border: none; color: white; cursor: pointer; text-decoration: underline; margin-top: 1rem; font-size: 0.9rem; } /* Bin Styles */ .bin-container { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; } .bin-card { background-color: #f5f5f5; border-radius: 10px; padding: 1.5rem; width: calc(25% - 15px); text-align: center; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; } .bin-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); } .bin-card img { width: 80px; height: 80px; margin-bottom: 1rem; } .bin-card h3 { color: #4CAF50; margin-bottom: 0.5rem; } /* Progress Bar */ .progress-container { width: 100%; height: 20px; background-color: #e0e0e0; border-radius: 10px; margin: 1rem 0; overflow: hidden; } .progress-bar { height: 100%; background-color: #4CAF50; border-radius: 10px; transition: width 1s ease-in-out; } /* Responsive Design */ @media (max-width: 768px) { .bin-card { width: calc(50% - 10px); } .main-nav ul { flex-direction: column; align-items: center; } .main-nav li { margin: 0.5rem 0; } } @media (max-width: 480px) { .bin-card { width: 100%; } } /* Vehicle Tracking Styles */ .highway { width: 100%; height: 150px; background: #333; position: relative; overflow: hidden; margin-bottom: 20px; border-radius: 10px; } .lane { width: 95%; height: 10px; background: white; position: absolute; top: 50%; left: 2.5%; transform: translateY(-50%); display: flex; justify-content: space-between; } .lane div { width: 20px; height: 10px; background: yellow; } #map { height: 70vh; width: 100%; border-radius: 10px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); } /* Reward System Styles */ .reward-container { max-width: 500px; margin: 0 auto; background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); padding: 25px; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); border-radius: 15px; } .history-section { margin-top: 20px; text-align: left; background: rgba(255, 255, 255, 0.1); padding: 15px; border-radius: 10px; } .history-list { list-style-type: none; padding: 0; } .history-item { background: rgba(255, 255, 255, 0.2); padding: 10px; border-radius: 8px; margin: 5px 0; } /* Blockchain Section Styles */ .blockchain-card { background-color: white; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); padding: 1.5rem; margin-bottom: 1.5rem; display: flex; align-items: center; } .blockchain-icon { background-color: #f0f8ff; padding: 15px; border-radius: 50%; margin-right: 20px; } .blockchain-icon img { width: 40px; height: 40px; } .blockchain-content { flex: 1; } /* Waste Optimization Styles */ .optimization-card { background-color: white; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); padding: 1.5rem; margin-bottom: 1.5rem; display: flex; align-items: center; } .optimization-icon { background-color: #e8f5e9; padding: 15px; border-radius: 50%; margin-right: 20px; } .optimization-icon img { width: 40px; height: 40px; } .optimization-content { flex: 1; }

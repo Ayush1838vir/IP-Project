@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Waste Classification - Smart Waste Management</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="main-header">
+        <h1>AI-Based Waste Classification</h1>
+        <p>Smart technology for efficient waste segregation</p>
+    </header>
+
+    <nav class="main-nav container">
+        <ul>
+            <li><a href="dashboard.html">Home</a></li>
+            <li><a href="waste-classification.html" class="active">AI Classification</a></li>
+            <li><a href="smart-bins.html">Smart Bins</a></li>
+            <li><a href="rewards.html">Rewards</a></li>
+            <li><a href="blockchain.html">Blockchain</a></li>
+            <li><a href="vehicle-tracking.html">Vehicle Tracking</a></li>
+            <li><a href="waste-optimization.html">Optimization</a></li>
+            <li><a href="index.html">Logout</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <div class="card">
+            <h2 class="card-title">AI Smart Bins</h2>
+            <p class="mb-3">
+                Our AI-powered waste classification system uses computer vision to automatically sort waste into appropriate categories.
+                This technology helps reduce contamination in recycling streams and ensures proper disposal of hazardous materials.
+            </p>
+            
+            <div class="bin-container">
+                <div class="bin-card" onclick="openBinDetails('bio')">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1040/1040230.png" alt="Bio Bin">
+                    <h3>Biodegradable</h3>
+                    <p>Food scraps, garden waste, and organic materials</p>
+                </div>
+                
+                <div class="bin-card" onclick="openBinDetails('recycle')">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3081/3081850.png" alt="Recycle Bin">
+                    <h3>Recyclable</h3>
+                    <p>Paper, glass, plastics, and metals</p>
+                </div>
+                
+                <div class="bin-card" onclick="openBinDetails('hazard')">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1995/1995530.png" alt="Hazardous Bin">
+                    <h3>Hazardous</h3>
+                    <p>Chemicals, batteries, and toxic materials</p>
+                </div>
+                
+                <div class="bin-card" onclick="openBinDetails('ewaste')">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2432/2432576.png" alt="E-Waste Bin">
+                    <h3>Electronic Waste</h3>
+                    <p>Computers, smartphones, and electronic devices</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mt-4">
+            <h2 class="card-title">How It Works</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3 class="card-title">Image Recognition</h3>
+                    <p>Our AI system uses advanced image recognition algorithms to identify different types of waste materials with high accuracy.</p>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Real-time Processing</h3>
+                    <p>The system processes images in real-time, providing immediate feedback on waste classification to users.</p>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Continuous Learning</h3>
+                    <p>Our AI models continuously learn from new data, improving classification accuracy over time.</p>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Integration with Smart Bins</h3>
+                    <p>The AI system is integrated with our smart bins, automatically directing waste to the appropriate container.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2025 Smart Waste Management Himachal Pradesh</p>
+    </footer>
+
+    <script>
+        function openBinDetails(binType) {
+            window.location.href = `bin-details.html?bin=${binType}`;
+        }
+    </script>
+</body>
+</html>

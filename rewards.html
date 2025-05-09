@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rewards - Smart Waste Management</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="main-header">
+        <h1>Waste Credit and Reward System</h1>
+        <p>Earn credits for responsible waste management</p>
+    </header>
+
+    <nav class="main-nav container">
+        <ul>
+            <li><a href="dashboard.html">Home</a></li>
+            <li><a href="waste-classification.html">AI Classification</a></li>
+            <li><a href="smart-bins.html">Smart Bins</a></li>
+            <li><a href="rewards.html" class="active">Rewards</a></li>
+            <li><a href="blockchain.html">Blockchain</a></li>
+            <li><a href="vehicle-tracking.html">Vehicle Tracking</a></li>
+            <li><a href="waste-optimization.html">Optimization</a></li>
+            <li><a href="index.html">Logout</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <div class="card">
+            <h2 class="card-title">Calculate Your Waste Credits</h2>
+            <p class="mb-3">
+                Enter the amount of waste you've properly segregated to calculate your earned credits.
+                These credits can be redeemed for various rewards and discounts.
+            </p>
+            
+            <form id="waste-form">
+                <div class="grid">
+                    <div class="form-group">
+                        <label for="plastic">Plastic (kg):</label>
+                        <input type="number" id="plastic" name="plastic" min="0" step="0.1" class="form-control">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="polythene">Polythene (kg):</label>
+                        <input type="number" id="polythene" name="polythene" min="0" step="0.1" class="form-control">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="bottles">Bottles (count):</label>
+                        <input type="number" id="bottles" name="bottles" min="0" class="form-control">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="paper">Paper (kg):</label>
+                        <input type="number" id="paper" name="paper" min="0" step="0.1" class="form-control">
+                    </div>
+                </div>
+                
+                <div class="text-center mt-3">
+                    <button type="button" class="btn" onclick="calculateRewards()">Calculate Rewards</button>
+                </div>
+            </form>
+
+            <h3 class="mt-4 mb-2">Rewards Summary</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Material</th>
+                        <th>Amount</th>
+                        <th>Credits Earned</th>
+                    </tr>
+                </thead>
+                <tbody id="rewards-summary">
+                    <tr>
+                        <td colspan="3" class="text-center">No data yet. Calculate your rewards above.</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="2">Total Credits:</th>
+                        <th id="total-credits">0</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+        <div class="card mt-4">
+            <h2 class="card-title">Your Credit Balance</h2>
+            <div class="text-center">
+                <h3 style="font-size: 2.5rem; color: #4CAF50;">250 Credits</h3>
+                <p>You've earned 250 credits through responsible waste management!</p>
+                <a href="redeem-rewards.html" class="btn mt-3">Redeem Rewards</a>
+            </div>
+        </div>
+
+        <div class="card mt-4">
+            <h2 class="card-title">Credit Rates</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Material</th>
+                        <th>Credits per Unit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Plastic</td>
+                        <td>10 credits per kg</td>
+                    </tr>
+                    <tr>
+                        <td>Polythene</td>
+                        <td>8 credits per kg</td>
+                    </tr>
+                    <tr>
+                        <td>Bottles</td>
+                        <td>5 credits per bottle</td>
+                    </tr>
+                    <tr>
+                        <td>Paper</td>
+                        <td>7 credits per kg</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2025 Smart Waste Management Himachal Pradesh</p>
+    </footer>
+
+    <script>
+        function calculateRewards() {
+            const plasticCredits = 10;
+            const polytheneCredits = 8;
+            const bottleCredits = 5;
+            const paperCredits = 7;
+
+            const plastic = parseFloat(document.getElementById('plastic').value) || 0;
+            const polythene = parseFloat(document.getElementById('polythene').value) || 0;
+            const bottles = parseInt(document.getElementById('bottles').value) || 0;
+            const paper = parseFloat(document.getElementById('paper').value) || 0;
+
+            const plasticTotal = plastic * plasticCredits;
+            const polytheneTotal = polythene * polytheneCredits;
+            const bottlesTotal = bottles * bottleCredits;
+            const paperTotal = paper * paperCredits;
+
+            const totalCredits = plasticTotal + polytheneTotal + bottlesTotal + paperTotal;
+
+            const summaryTable = document.getElementById('rewards-summary');
+            summaryTable.innerHTML = `
+                <tr>
+                    <td>Plastic</td>
+                    <td>${plastic} kg</td>
+                    <td>${plasticTotal} credits</td>
+                </tr>
+                <tr>
+                    <td>Polythene</td>
+                    <td>${polythene} kg</td>
+                    <td>${polytheneTotal} credits</td>
+                </tr>
+                <tr>
+                    <td>Bottles</td>
+                    <td>${bottles} items</td>
+                    <td>${bottlesTotal} credits</td>
+                </tr>
+                <tr>
+                    <td>Paper</td>
+                    <td>${paper} kg</td>
+                    <td>${paperTotal} credits</td>
+                </tr>
+            `;
+
+            document.getElementById('total-credits').innerText = totalCredits;
+        }
+    </script>
+</body>
+</html>

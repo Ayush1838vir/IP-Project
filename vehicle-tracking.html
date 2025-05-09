@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Tracking - Smart Waste Management</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body>
+    <header class="main-header">
+        <h1>Waste Collection Vehicle Tracking</h1>
+        <p>Real-time monitoring of waste collection vehicles in Himachal Pradesh</p>
+    </header>
+
+    <nav class="main-nav container">
+        <ul>
+            <li><a href="dashboard.html">Home</a></li>
+            <li><a href="waste-classification.html">AI Classification</a></li>
+            <li><a href="smart-bins.html">Smart Bins</a></li>
+            <li><a href="rewards.html">Rewards</a></li>
+            <li><a href="blockchain.html">Blockchain</a></li>
+            <li><a href="vehicle-tracking.html" class="active">Vehicle Tracking</a></li>
+            <li><a href="waste-optimization.html">Optimization</a></li>
+            <li><a href="index.html">Logout</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <div class="card">
+            <h2 class="card-title">Live Vehicle Tracking</h2>
+            <p class="mb-3">
+                Track waste collection vehicles in real-time as they move across Himachal Pradesh.
+                Our system optimizes routes to ensure efficient waste collection and transportation.
+            </p>
+            
+            <!-- Fake Highway Animation -->
+            <div class="highway">
+                <div class="lane">
+                    <div></div><div></div><div></div><div></div><div></div>
+                </div>
+            </div>
+            
+            <!-- Map Container -->
+            <div id="map"></div>
+        </div>
+
+        <div class="card mt-4">
+            <h2 class="card-title">Vehicle Fleet Status</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Vehicle ID</th>
+                        <th>Current Location</th>
+                        <th>Status</th>
+                        <th>Fill Level</th>
+                        <th>Next Destination</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>WM-001</td>
+                        <td>Shimla</td>
+                        <td><span style="color: green;">Active</span></td>
+                        <td>45%</td>
+                        <td>Manali</td>
+                    </tr>
+                    <tr>
+                        <td>WM-002</td>
+                        <td>Dharamshala</td>
+                        <td><span style="color: green;">Active</span></td>
+                        <td>30%</td>
+                        <td>Kullu</td>
+                    </tr>
+                    <tr>
+                        <td>WM-003</td>
+                        <td>Manali</td>
+                        <td><span style="color: orange;">Maintenance</span></td>
+                        <td>0%</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>WM-004</td>
+                        <td>Kullu</td>
+                        <td><span style="color: green;">Active</span></td>
+                        <td>70%</td>
+                        <td>Processing Center</td>
+                    </tr>
+                    <tr>
+                        <td>WM-005</td>
+                        <td>Processing Center</td>
+                        <td><span style="color: blue;">Loading</span></td>
+                        <td>10%</td>
+                        <td>Shimla</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card mt-4">
+            <h2 class="card-title">Route Optimization</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3 class="card-title">Fuel Savings</h3>
+                    <p>Our route optimization has reduced fuel consumption by 30% compared to traditional routes.</p>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Time Efficiency</h3>
+                    <p>Collection time has been reduced by 25%, allowing for more frequent waste collection.</p>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Carbon Reduction</h3>
+                    <p>Optimized routes have reduced carbon emissions by an estimated 40 tons per month.</p>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Cost Savings</h3>
+                    <p>Overall operational costs have been reduced by 20% through efficient routing and scheduling.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2025 Smart Waste Management Himachal Pradesh</p>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-routing-machine/3.2.12/leaflet-routing-machine.min.js"></script>
+    <script>
+        // Initialize map when the page is loaded
+        window.onload = function() {
+            var map = L.map('map').setView([31.1048, 77.1734], 8);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+            var locations = {
+                shimla: [31.1048, 77.1734],
+                manali: [32.2396, 77.1887],
+                dharamshala: [32.2190, 76.3234],
+                kullu: [31.9579, 77.1095],
+                chitkara: [30.877, 76.872]
+            };
+
+            // Add markers
+            for (let loc in locations) {
+                L.marker(locations[loc]).addTo(map).bindPopup(loc.charAt(0).toUpperCase() + loc.slice(1));
+            }
+
+            // Car icon
+            var carIcon = L.icon({
+                iconUrl: 'https://cdn-icons-png.flaticon.com/512/741/741407.png',
+                iconSize: [30, 30],
+                iconAnchor: [25, 25]
+            });
+
+            // Car marker
+            var carMarker = L.marker(locations.shimla, { icon: carIcon }).addTo(map);
+
+            // Add car moving on real roads
+            var control = L.Routing.control({
+                waypoints: [
+                    L.latLng(locations.shimla),
+                    L.latLng(locations.manali),
+                    L.latLng(locations.dharamshala),
+                    L.latLng(locations.kullu),
+                    L.latLng(locations.chitkara)
+                ],
+                routeWhileDragging: true,
+                createMarker: function() { return null; }, // No extra markers
+                lineOptions: { styles: [{ color: 'black', weight: 8 }] } // Two-lane road look
+            }).addTo(map);
+
+            // Function to animate the car along the route
+            control.on('routesfound', function(e) {
+                var route = e.routes[0].coordinates;
+                var i = 0;
+
+                function moveCar() {
+                    if (i < route.length) {
+                        carMarker.setLatLng(route[i]);
+                        i++;
+                        setTimeout(moveCar, 100); // Slow movement
+                    }
+                }
+                moveCar();
+            });
+        };
+    </script>
+</body>
+</html>

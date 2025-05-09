@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bin Details - Smart Waste Management</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="main-header">
+        <h1 id="bin-title">Bin Details</h1>
+        <p>Smart Waste Management System</p>
+    </header>
+
+    <nav class="main-nav container">
+        <ul>
+            <li><a href="dashboard.html">Home</a></li>
+            <li><a href="waste-classification.html">AI Classification</a></li>
+            <li><a href="smart-bins.html">Smart Bins</a></li>
+            <li><a href="rewards.html">Rewards</a></li>
+            <li><a href="blockchain.html">Blockchain</a></li>
+            <li><a href="vehicle-tracking.html">Vehicle Tracking</a></li>
+            <li><a href="waste-optimization.html">Optimization</a></li>
+            <li><a href="index.html">Logout</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <div class="card">
+            <div class="text-center">
+                <img id="bin-image" src="/placeholder.svg" alt="Bin Image" style="width: 150px; height: 150px; margin-bottom: 20px;">
+                <h2 id="bin-subtitle" class="mb-2"></h2>
+                <p id="bin-description" class="mb-3"></p>
+                
+                <div class="progress-container">
+                    <div class="progress-bar" id="bin-fill" style="width: 50%;"></div>
+                </div>
+                <p id="bin-level" class="mb-3">50% Full</p>
+                
+                <div class="card mt-4">
+                    <h3 class="card-title">Bin Statistics</h3>
+                    <table class="table">
+                        <tr>
+                            <th>Collection Frequency</th>
+                            <td id="collection-frequency">Every 2 days</td>
+                        </tr>
+                        <tr>
+                            <th>Last Emptied</th>
+                            <td id="last-emptied">2 days ago</td>
+                        </tr>
+                        <tr>
+                            <th>Average Fill Rate</th>
+                            <td id="fill-rate">20% per day</td>
+                        </tr>
+                        <tr>
+                            <th>Location</th>
+                            <td id="location">Shimla Central Park</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <a href="waste-classification.html" class="btn mt-3">Back to AI Classification</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2025 Smart Waste Management Himachal Pradesh</p>
+    </footer>
+
+    <script>
+        // Function to get URL parameter
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        const binType = getQueryParam("bin");
+        const binData = {
+            "bio": {
+                title: "Biodegradable Waste",
+                subtitle: "Organic Waste Management",
+                image: "https://cdn-icons-png.flaticon.com/512/1040/1040230.png",
+                description: "Biodegradable waste includes food scraps, garden waste, and organic materials that decompose naturally. It helps in composting and reducing landfill waste.",
+                level: "40%",
+                frequency: "Every day",
+                lastEmptied: "Yesterday",
+                fillRate: "40% per day",
+                location: "Shimla Market Area"
+            },
+            "recycle": {
+                title: "Recyclable Waste",
+                subtitle: "Material Recovery",
+                image: "https://cdn-icons-png.flaticon.com/512/3081/3081850.png",
+                description: "Recyclable waste consists of materials that can be processed and reused, like paper, glass, and plastics. Recycling reduces pollution and conserves natural resources.",
+                level: "60%",
+                frequency: "Every 3 days",
+                lastEmptied: "2 days ago",
+                fillRate: "20% per day",
+                location: "Dharamshala Community Center"
+            },
+            "hazard": {
+                title: "Hazardous Waste",
+                subtitle: "Special Handling Required",
+                image: "https://cdn-icons-png.flaticon.com/512/1995/1995530.png",
+                description: "Hazardous waste includes chemicals, batteries, and toxic materials that require special disposal methods. It can be harmful to humans and the environment if not disposed of properly.",
+                level: "30%",
+                frequency: "Weekly",
+                lastEmptied: "4 days ago",
+                fillRate: "5% per day",
+                location: "Kullu Industrial Zone"
+            },
+            "ewaste": {
+                title: "Electronic Waste",
+                subtitle: "Technology Recycling",
+                image: "https://cdn-icons-png.flaticon.com/512/2432/2432576.png",
+                description: "E-Waste consists of discarded electronic devices like computers, smartphones, and batteries. Proper recycling prevents toxic chemicals from polluting the environment.",
+                level: "50%",
+                frequency: "Every 5 days",
+                lastEmptied: "3 days ago",
+                fillRate: "10% per day",
+                location: "Manali Tech Hub"
+            }
+        };
+
+        if (binData[binType]) {
+            document.getElementById("bin-title").innerText = binData[binType].title;
+            document.getElementById("bin-subtitle").innerText = binData[binType].subtitle;
+            document.getElementById("bin-image").src = binData[binType].image;
+            document.getElementById("bin-description").innerText = binData[binType].description;
+            document.getElementById("bin-fill").style.width = binData[binType].level;
+            document.getElementById("bin-level").innerText = binData[binType].level + " Full";
+            document.getElementById("collection-frequency").innerText = binData[binType].frequency;
+            document.getElementById("last-emptied").innerText = binData[binType].lastEmptied;
+            document.getElementById("fill-rate").innerText = binData[binType].fillRate;
+            document.getElementById("location").innerText = binData[binType].location;
+        } else {
+            document.querySelector(".container").innerHTML = "<div class='card'><h2>Bin not found</h2><a href='waste-classification.html' class='btn'>Back to AI Classification</a></div>";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Smart Waste Management</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="form-container">
+            <!-- Login Form -->
+            <form id="login-form" class="form">
+                <h2 class="text-center mb-3">Smart Waste Management System</h2>
+                <h3 class="text-center mb-3">Login</h3>
+                
+                <div class="form-group">
+                    <input type="email" id="login-email" class="form-control" placeholder="Email" required>
+                </div>
+                
+                <div class="form-group">
+                    <input type="password" id="login-password" class="form-control" placeholder="Password" required>
+                </div>
+                
+                <button type="submit" class="btn" style="width: 100%;">Login</button>
+                <button type="button" class="form-toggle" onclick="toggleForms()">Don't have an account? Register</button>
+            </form>
+
+            <!-- Register Form -->
+            <form id="register-form" class="form" style="display: none;">
+                <h2 class="text-center mb-3">Smart Waste Management System</h2>
+                <h3 class="text-center mb-3">Register</h3>
+                
+                <div class="form-group">
+                    <input type="text" id="register-name" class="form-control" placeholder="Full Name" required>
+                </div>
+                
+                <div class="form-group">
+                    <input type="email" id="register-email" class="form-control" placeholder="Email" required>
+                </div>
+                
+                <div class="form-group">
+                    <input type="password" id="register-password" class="form-control" placeholder="Password" required>
+                </div>
+                
+                <button type="submit" class="btn" style="width: 100%;">Register</button>
+                <button type="button" class="form-toggle" onclick="toggleForms()">Already have an account? Login</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Function to toggle between Login and Register forms
+        function toggleForms() {
+            const loginForm = document.getElementById('login-form');
+            const registerForm = document.getElementById('register-form');
+            
+            if (loginForm.style.display === 'none') {
+                loginForm.style.display = 'block';
+                registerForm.style.display = 'none';
+            } else {
+                loginForm.style.display = 'none';
+                registerForm.style.display = 'block';
+            }
+        }+
+
+        // Handle login form submission
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form from refreshing the page
+            let email = document.getElementById('login-email').value;
+            let password = document.getElementById('login-password').value;
+
+            if (email && password) {
+                alert('Login Successful');
+                window.location.href = 'dashboard.html'; // Redirect to dashboard
+            }
+        });
+
+        // Handle register form submission
+        document.getElementById('register-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form from refreshing the page
+            let name = document.getElementById('register-name').value;
+            let email = document.getElementById('register-email').value;
+            let password = document.getElementById('register-password').value;
+
+            if (name && email && password) {
+                alert('Registration Successful');
+                toggleForms(); // Switch to login form after registration
+            }
+        });
+    </script>
+    <ul>
+        <li><a href="waste-optimization.html"></a></li>
+  
+    </ul>
+</body>
+</html>

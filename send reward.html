@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reward System</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            text-align: center;
+            padding: 20px;
+            color: white;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+        }
+        input, button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        input {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            outline: none;
+            padding-left: 15px;
+        }
+        input::placeholder {
+            color: #ddd;
+        }
+        button {
+            background: #ff9800;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            background: #e68900;
+            transform: scale(1.05);
+        }
+        .toggle-btn {
+            background: #17a2b8;
+        }
+        .toggle-btn:hover {
+            background: #128a96;
+        }
+        .history {
+            margin-top: 20px;
+            text-align: left;
+            display: none; /* Initially hidden */
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+        }
+        h2, h3 {
+            font-weight: bold;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            border-radius: 8px;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🎁 Send Reward</h2>
+        <input type="text" id="receiverName" placeholder="Enter Receiver Name">
+        <input type="text" id="receiverContact" placeholder="Enter Receiver Contact No.">
+        <input type="email" id="receiverEmail" placeholder="Enter Receiver Email">
+        <input type="text" id="receiverAddress" placeholder="Enter Receiver Address">
+        <input type="number" id="amount" placeholder="Enter Amount">
+        <button onclick="sendReward()">Send Reward 💰</button>
+
+        <!-- Toggle History Button -->
+        <button class="toggle-btn" onclick="toggleHistory()">📜 Show History</button>
+
+        <div class="history" id="historySection">
+            <h3>📌 Transaction History</h3>
+            <ul id="historyList"></ul>
+        </div>
+    </div>
+    
+    <script>
+        function sendReward() {
+            var name = document.getElementById("receiverName").value;
+            var contact = document.getElementById("receiverContact").value;
+            var email = document.getElementById("receiverEmail").value;
+            var address = document.getElementById("receiverAddress").value;
+            var amount = document.getElementById("amount").value;
+
+            if (!name || !contact || !email || !address || !amount) {
+                alert("⚠️ Please fill in all fields before sending!");
+                return;
+            }
+
+            if (amount <= 0) {
+                alert("⚠️ Amount must be greater than zero!");
+                return;
+            }
+
+            // Simulating a payment process (Replace this with actual API call)
+            setTimeout(() => {
+                alert(`✅ ₹${amount} successfully sent to ${name}!`);
+
+                // Update history list
+                var historyList = document.getElementById("historyList");
+                var newTransaction = document.createElement("li");
+                newTransaction.textContent = `💸 Sent ₹${amount} to ${name} (📞 ${contact}, 📧 ${email}, 📍 ${address})`;
+                historyList.appendChild(newTransaction);
+
+                // Clear input fields
+                document.getElementById("receiverName").value = "";
+                document.getElementById("receiverContact").value = "";
+                document.getElementById("receiverEmail").value = "";
+                document.getElementById("receiverAddress").value = "";
+                document.getElementById("amount").value = "";
+
+                // Show history automatically
+                document.getElementById("historySection").style.display = "block";
+                document.querySelector(".toggle-btn").textContent = "📜 Hide History";
+            }, 1000); // Simulated delay for transaction
+        }
+
+        function toggleHistory() {
+            var historySection = document.getElementById("historySection");
+            var toggleButton = document.querySelector(".toggle-btn");
+
+            if (historySection.style.display === "none") {
+                historySection.style.display = "block";
+                toggleButton.textContent = "📜 Hide History";
+            } else {
+                historySection.style.display = "none";
+                toggleButton.textContent = "📜 Show History";
+            }
+        }
+    </script>
+</body>
+</html>

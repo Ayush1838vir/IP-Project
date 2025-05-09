@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redeem Rewards - Smart Waste Management</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #666261, #a2794b);
+        }
+        .main-header, .main-nav, .main-footer {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            color: white;
+        }
+        .form-control {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+        }
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .card-title {
+            color: white;
+        }
+        .table th, .table td {
+            border-color: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        .table th {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <h1>Redeem Your Rewards</h1>
+        <p>Use your earned credits for valuable rewards</p>
+    </header>
+
+    <nav class="main-nav container">
+        <ul>
+            <li><a href="dashboard.html">Home</a></li>
+            <li><a href="waste-classification.html">AI Classification</a></li>
+            <li><a href="smart-bins.html">Smart Bins</a></li>
+            <li><a href="rewards.html">Rewards</a></li>
+            <li><a href="blockchain.html">Blockchain</a></li>
+            <li><a href="vehicle-tracking.html">Vehicle Tracking</a></li>
+            <li><a href="waste-optimization.html">Optimization</a></li>
+            <li><a href="index.html">Logout</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <div class="card">
+            <h2 class="card-title">Your Credit Balance</h2>
+            <div class="text-center">
+                <h3 style="font-size: 2.5rem;">250 Credits</h3>
+            </div>
+        </div>
+
+        <div class="card mt-4">
+            <h2 class="card-title">Send Reward</h2>
+            <form id="reward-form">
+                <div class="form-group">
+                    <label for="receiverName">Receiver Name:</label>
+                    <input type="text" id="receiverName" class="form-control" placeholder="Enter Receiver Name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="receiverContact">Contact Number:</label>
+                    <input type="text" id="receiverContact" class="form-control" placeholder="Enter Receiver Contact No.">
+                </div>
+                
+                <div class="form-group">
+                    <label for="receiverEmail">Email:</label>
+                    <input type="email" id="receiverEmail" class="form-control" placeholder="Enter Receiver Email">
+                </div>
+                
+                <div class="form-group">
+                    <label for="receiverAddress">Address:</label>
+                    <input type="text" id="receiverAddress" class="form-control" placeholder="Enter Receiver Address">
+                </div>
+                
+                <div class="form-group">
+                    <label for="amount">Amount:</label>
+                    <input type="number" id="amount" class="form-control" placeholder="Enter Amount">
+                </div>
+                
+                <div class="text-center mt-3">
+                    <button type="button" class="btn btn-warning" onclick="sendReward()">Send Reward 💰</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="card mt-4">
+            <h2 class="card-title">Transaction History</h2>
+            <button class="btn btn-secondary mb-3" onclick="toggleHistory()">Toggle History</button>
+            
+            <div id="historySection" style="display: none;">
+                <ul class="history-list" id="historyList">
+                    <li class="history-item">💸 Sent ₹50 to John Doe (📞 9876543210, 📧 john@example.com, 📍 Shimla)</li>
+                    <li class="history-item">💸 Sent ₹30 to Jane Smith (📞 9876543211, 📧 jane@example.com, 📍 Manali)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card mt-4">
+            <h2 class="card-title">Available Rewards</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3 class="card-title">Utility Discounts</h3>
+                    <p>Redeem your credits for discounts on electricity and water bills.</p>
+                    <p class="mt-2"><strong>Cost:</strong> 100 credits for 5% discount</p>
+                    <div class="text-center mt-3">
+                        <button class="btn">Redeem</button>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Shopping Vouchers</h3>
+                    <p>Get vouchers for local eco-friendly stores and products.</p>
+                    <p class="mt-2"><strong>Cost:</strong> 200 credits for ₹100 voucher</p>
+                    <div class="text-center mt-3">
+                        <button class="btn">Redeem</button>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Public Transport Passes</h3>
+                    <p>Free passes for public transportation in Himachal Pradesh.</p>
+                    <p class="mt-2"><strong>Cost:</strong> 150 credits for a weekly pass</p>
+                    <div class="text-center mt-3">
+                        <button class="btn">Redeem</button>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Tree Planting</h3>
+                    <p>Sponsor tree planting in your name across Himachal Pradesh.</p>
+                    <p class="mt-2"><strong>Cost:</strong> 50 credits per tree</p>
+                    <div class="text-center mt-3">
+                        <button class="btn">Redeem</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2025 Smart Waste Management Himachal Pradesh</p>
+    </footer>
+
+    <script>
+        function toggleHistory() {
+            const historySection = document.getElementById('historySection');
+            if (historySection.style.display === 'none') {
+                historySection.style.display = 'block';
+            } else {
+                historySection.style.display = 'none';
+            }
+        }
+
+        function sendReward() {
+            const name = document.getElementById('receiverName').value;
+            const contact = document.getElementById('receiverContact').value;
+            const email = document.getElementById('receiverEmail').value;
+            const address = document.getElementById('receiverAddress').value;
+            const amount = document.getElementById('amount').value;
+
+            if (!name || !contact || !email || !address || !amount) {
+                alert("⚠️ Please fill in all fields before sending!");
+                return;
+            }
+
+            if (amount <= 0) {
+                alert("⚠️ Amount must be greater than zero!");
+                return;
+            }
+
+            // Simulating a payment process
+            setTimeout(() => {
+                alert(`✅ ₹${amount} successfully sent to ${name}!`);
+
+                // Update history list
+                const historyList = document.getElementById('historyList');
+                const newTransaction = document.createElement('li');
+                newTransaction.className = 'history-item';
+                newTransaction.textContent = `💸 Sent ₹${amount} to ${name} (📞 ${contact}, 📧 ${email}, 📍 ${address})`;
+                historyList.insertBefore(newTransaction, historyList.firstChild);
+
+                // Clear input fields
+                document.getElementById('receiverName').value = '';
+                document.getElementById('receiverContact').value = '';
+                document.getElementById('receiverEmail').value = '';
+                document.getElementById('receiverAddress').value = '';
+                document.getElementById('amount').value = '';
+
+                // Show history automatically
+                document.getElementById('historySection').style.display = 'block';
+            }, 1000);
+        }
+    </script>
+</body>
+</html>

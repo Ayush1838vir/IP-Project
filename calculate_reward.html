@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waste Credit and Reward System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .button {
+            display: inline-block;
+            margin: 10px 0;
+            padding: 10px 20px;
+            font-size: 16px;
+            background: #28a745;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background: #218838;
+            .b{ width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;}
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Waste Credit and Reward System</h1>
+        <form id="waste-form">
+            <label for="plastic">Plastic (kg):</label>
+            <input type="number" id="plastic" name="plastic" min="0" step="0.1"><br><br>
+
+            <label for="polythene">Polythene (kg):</label>
+            <input type="number" id="polythene" name="polythene" min="0" step="0.1"><br><br>
+
+            <label for="bottles">Bottles (count):</label>
+            <input type="number" id="bottles" name="bottles" min="0"><br><br>
+
+            <label for="paper">Paper (kg):</label>
+            <input type="number" id="paper" name="paper" min="0" step="0.1"><br><br>
+
+            <button type="button" class="button" onclick="calculateRewards()">Calculate Rewards</button>
+        </form>
+
+        <h2>Rewards Summary</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Material</th>
+                    <th>Amount</th>
+                    <th>Credits Earned</th>
+                </tr>
+            </thead>
+            <tbody id="rewards-summary">
+                <tr>
+                    <td colspan="3">No data yet.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Total Credits: <span id="total-credits">0</span></h3>
+    </div>
+
+    <script>
+        function calculateRewards() {
+            const plasticCredits = 10;
+            const polytheneCredits = 8;
+            const bottleCredits = 5;
+            const paperCredits = 7;
+
+            const plastic = parseFloat(document.getElementById('plastic').value) || 0;
+            const polythene = parseFloat(document.getElementById('polythene').value) || 0;
+            const bottles = parseInt(document.getElementById('bottles').value) || 0;
+            const paper = parseFloat(document.getElementById('paper').value) || 0;
+
+            const plasticTotal = plastic * plasticCredits;
+            const polytheneTotal = polythene * polytheneCredits;
+            const bottlesTotal = bottles * bottleCredits;
+            const paperTotal = paper * paperCredits;
+
+            const totalCredits = plasticTotal + polytheneTotal + bottlesTotal + paperTotal;
+
+            const summaryTable = document.getElementById('rewards-summary');
+            summaryTable.innerHTML = `
+                <tr>
+                    <td>Plastic</td>
+                    <td>${plastic} kg</td>
+                    <td>${plasticTotal} credits</td>
+                </tr>
+                <tr>
+                    <td>Polythene</td>
+                    <td>${polythene} kg</td>
+                    <td>${polytheneTotal} credits</td>
+                </tr>
+                <tr>
+                    <td>Bottles</td>
+                    <td>${bottles} items</td>
+                    <td>${bottlesTotal} credits</td>
+                </tr>
+                <tr>
+                    <td>Paper</td>
+                    <td>${paper} kg</td>
+                    <td>${paperTotal} credits</td>
+                </tr>
+            `;
+
+            document.getElementById('total-credits').innerText = totalCredits;
+        }
+    </script>
+    <div class="container">
+        <h1>Waste Credit and Rewards</h1>
+        
+        <div class="box">
+            <h2>Your Credits: {{ user.credits }}</h2>
+        </div>
+        
+        <div class="box">
+            <h2>Earn Credits</h2>
+            <form action="/earn" method="post">
+                <select name="waste_type" required>
+                        <input type="number">
+                </select>
+                <button class="button" type="">Earn</button>
+                <h2></h2>
+            </form>
+        </div>  
+        </div>
+        </div>
+        
+        <div class="box">
+            <a href="send reward.html"><h2>Redeem Reward</h2></a>
+            <form action="/redeem" method="post">
+                <select name="reward" required>
+            <option class="b">
+                        <option value="plastic"plastic></option>
+                            <option value="polythene"polythene></option>
+                                <option value="paper"paper></option>
+                                    <option value="bottles"bottles></option><br></option>
+                </select>
+                <button class="button" type="submit">Redeem</button>
+               
+            </form>
+        </div>
+        </div>
+    </div>
+</body>
+</html>

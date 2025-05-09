@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bin Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+        }
+        img {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 20px;
+        }
+        .capacity-bar {
+            width: 100%;
+            height: 20px;
+            background: #ccc;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 10px;
+            position: relative;
+        }
+        .fill {
+            height: 100%;
+            background: #28a745;
+            transition: width 1s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 id="bin-title">Bin Details</h2>
+        <img id="bin-image" src="" alt="Bin Image">
+        <p id="bin-description"></p>
+        <div class="capacity-bar">
+            <div class="fill" id="bin-fill" style="width: 50%;"></div>
+        </div>
+        <p id="bin-level">50% Full</p>
+        <br>
+        <a href="smart ai bins.html">Back to Home</a>
+    </div>
+
+    <script>
+        // Function to get URL parameter
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        const binType = getQueryParam("bin");
+        const binData = {
+            "bio": {
+                title: "Biodegradable Waste",
+                image: "https://cdn-icons-png.flaticon.com/512/1040/1040230.png",
+                description: "Biodegradable waste includes food scraps, garden waste, and organic materials that decompose naturally. It helps in composting and reducing landfill waste.",
+                level: "40%"
+            },
+            "recycle": {
+                title: "Recyclable Waste",
+                image: "https://cdn-icons-png.flaticon.com/512/3081/3081850.png",
+                description: "Recyclable waste consists of materials that can be processed and reused, like paper, glass, and plastics. Recycling reduces pollution and conserves natural resources.",
+                level: "60%"
+            },
+            "hazard": {
+                title: "Hazardous Waste",
+                image: "https://cdn-icons-png.flaticon.com/512/1995/1995530.png",
+                description: "Hazardous waste includes chemicals, batteries, and toxic materials that require special disposal methods. It can be harmful to humans and the environment if not disposed of properly.",
+                level: "30%"
+            },
+            "ewaste": {
+                title: "Electronic Waste",
+                image: "https://cdn-icons-png.flaticon.com/512/2432/2432576.png",
+                description: "E-Waste consists of discarded electronic devices like computers, smartphones, and batteries. Proper recycling prevents toxic chemicals from polluting the environment.",
+                level: "50%"
+            }
+        };
+
+        if (binData[binType]) {
+            document.getElementById("bin-title").innerText = binData[binType].title;
+            document.getElementById("bin-image").src = binData[binType].image;
+            document.getElementById("bin-description").innerText = binData[binType].description;
+            document.getElementById("bin-fill").style.width = binData[binType].level;
+            document.getElementById("bin-level").innerText = binData[binType].level + " Full";
+        } else {
+            document.querySelector(".container").innerHTML = "<h2>Bin not found</h2><a href='index.html'>Back to Home</a>";
+        }
+    </script>
+</body>
+</html>
